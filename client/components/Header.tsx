@@ -11,7 +11,7 @@ const Header = () => {
         </Link>
 
         <nav className="flex space-x-6">
-          <Link href="/tournaments" className="hover:underline">
+          <Link href="/dashboard" className="hover:underline">
             Dashboard
           </Link>
           <Link href="/" className="hover:underline">
