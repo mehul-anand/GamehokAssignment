@@ -14,16 +14,26 @@ export default function TournamentDashboard() {
 
   useEffect(() => {
     setLoading(true);
-    
-    const timeout = setTimeout(() => {
-      setTournaments(mockTournaments);
-      setLoading(false);
-    }, 1000);
-    
-    return () => clearTimeout(timeout);
+
+    fetch('http://localhost:8080/api/tournaments')
+      .then(res => res.json())
+      .then(data => setTournaments(data))
+      .catch(err => {
+        setError("Failed to load tournaments")
+        console.log(err);
+
+      })
+      .finally(() => setLoading(false));
+
+    // const timeout = setTimeout(() => {
+    //   setTournaments(mockTournaments);
+    //   setLoading(false);
+    // }, 1000);
+
+    // return () => clearTimeout(timeout);
   }, []);
 
-  const filteredTournaments = tournaments.filter(tournament => 
+  const filteredTournaments = tournaments.filter(tournament =>
     filter === "all" || tournament.status === filter
   );
 
@@ -48,11 +58,11 @@ export default function TournamentDashboard() {
         <TabsContent value="all" className="mt-0">
           {renderTournamentGrid(filteredTournaments, loading, error)}
         </TabsContent>
-        
+
         <TabsContent value="Upcoming" className="mt-0">
           {renderTournamentGrid(filteredTournaments, loading, error)}
         </TabsContent>
-        
+
         <TabsContent value="Completed" className="mt-0">
           {renderTournamentGrid(filteredTournaments, loading, error)}
         </TabsContent>
