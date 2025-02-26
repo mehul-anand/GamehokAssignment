@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="w-full bg-white text-gray-900 shadow-sm mb-2">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        <Link href="/" className="text-xl font-bold sm:text-2xl">
+        <Link href="/" className="text-xl sm:text-2xl  gradient-text">
           Gamehok Tournament
         </Link>
 
