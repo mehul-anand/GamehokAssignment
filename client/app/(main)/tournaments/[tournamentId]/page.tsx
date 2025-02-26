@@ -43,17 +43,11 @@ export default function TournamentDetails() {
 
     useEffect(() => {
         setLoading(true);
-        const timeout = setTimeout(() => {
-            const singleTournament = mockTournaments.find(tournamentDetails => tournamentDetails.id === id);
-            if (singleTournament) {
-                setTournament(singleTournament);
-            } else {
-                setError("Tournament not found");
-            }
-            setLoading(false);
-        }, 1000);
-
-        return () => clearTimeout(timeout);
+        fetch(`http://localhost:8080/api/tournaments/${id}`)
+          .then(res => res.json())
+          .then(data => setTournament(data))
+          .catch(err => setError("Failed to load tournament details"))
+          .finally(() => setLoading(false));
     }, [tournamentId]);
 
     const handleBack = () => {
