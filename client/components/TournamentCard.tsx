@@ -26,7 +26,6 @@ const TournamentCard: React.FC<TournamentCardProps> = ({ tournament }) => {
     day: 'numeric'
   });
 
-  // Format prize pool with currency
   const formattedPrizePool = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
