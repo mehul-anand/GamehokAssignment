@@ -11,11 +11,14 @@ const Header = () => {
         </Link>
 
         <nav className="flex space-x-6">
+          <Link href="/" className="hover:underline hidden sm:flex">
+            Home
+          </Link>
           <Link href="/dashboard" className="hover:underline">
             Dashboard
           </Link>
-          <Link href="/" className="hover:underline">
-            Home
+          <Link href="/create" className="hover:underline">
+            Create
           </Link>
         </nav>
 
