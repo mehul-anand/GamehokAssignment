@@ -14,8 +14,7 @@ export default function TournamentDashboard() {
 
   useEffect(() => {
     setLoading(true);
-
-    fetch('http://localhost:8080/api/tournaments')
+    fetch(`${process.env.NEXT_PUBLIC_TOURNAMENT_API}/api/tournaments`)
       .then(res => res.json())
       .then(data => setTournaments(data))
       .catch(err => {

@@ -43,7 +43,7 @@ export default function TournamentDetails() {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:8080/api/tournaments/${id}`)
+        fetch(`${process.env.NEXT_PUBLIC_TOURNAMENT_API}/api/tournaments/${id}`)
           .then(res => res.json())
           .then(data => setTournament(data))
           .catch(err => setError("Failed to load tournament details"))
