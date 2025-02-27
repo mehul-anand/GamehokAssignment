@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TournamentCard, { Tournament } from "@/components/TournamentCard";
 import { Skeleton } from "@/components/ui/skeleton";
-import { mockTournaments } from "@/db/mockDB";
 
 export default function TournamentDashboard() {
   const [tournaments, setTournaments] = useState<Tournament[]>([]);

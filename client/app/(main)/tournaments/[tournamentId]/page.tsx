@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CalendarIcon, Trophy, ArrowLeft, Info, Award } from "lucide-react";
 import { Tournament } from "@/components/TournamentCard";
-import { mockTournaments } from "@/db/mockDB";
 
 
 const getPrizeBreakdown = (prizePool: number) => {
@@ -35,7 +34,7 @@ export default function TournamentDetails() {
     const router = useRouter();
     const { tournamentId } = useParams() as { tournamentId: string };
     const id = Number(tournamentId)
-    
+
 
     const [tournament, setTournament] = useState<Tournament | null>(null);
     const [loading, setLoading] = useState(true);
@@ -44,10 +43,14 @@ export default function TournamentDetails() {
     useEffect(() => {
         setLoading(true);
         fetch(`${process.env.NEXT_PUBLIC_TOURNAMENT_API}/api/tournaments/${id}`)
-          .then(res => res.json())
-          .then(data => setTournament(data))
-          .catch(err => setError("Failed to load tournament details"))
-          .finally(() => setLoading(false));
+            .then(res => res.json())
+            .then(data => setTournament(data))
+            .catch(err => {
+                setError("Failed to load tournament details")
+                console.log(err);
+
+            })
+            .finally(() => setLoading(false));
     }, [tournamentId]);
 
     const handleBack = () => {
