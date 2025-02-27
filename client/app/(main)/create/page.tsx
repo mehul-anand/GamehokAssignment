@@ -8,12 +8,12 @@ import { Textarea } from "@/components/ui/textarea";
 
 export default function CreateTournamentPage() {
   const [formData, setFormData] = useState({
-    title: "Test",
-    gameName: "Game",
+    title: "",
+    gameName: "",
     date: "",
-    prizePool: "2300",
+    prizePool: "",
     status: "Upcoming",
-    description: "Desc",
+    description: "",
   });
   const [message, setMessage] = useState("");
 
