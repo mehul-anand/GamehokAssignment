@@ -29,5 +29,10 @@ public class TournamentController {
         return tournament.map(ResponseEntity::ok)
                          .orElseGet(() -> ResponseEntity.notFound().build());
     }
-}
 
+    // POST /api/tournaments: Create a new tournament
+    @PostMapping
+    public Tournament createTournament(@RequestBody Tournament tournament) {
+        return tournamentRepository.save(tournament);
+    }
+}
