@@ -51,7 +51,7 @@ export default function TournamentDetails() {
 
             })
             .finally(() => setLoading(false));
-    }, [tournamentId]);
+    }, [id]);
 
     const handleBack = () => {
         router.push("/dashboard");

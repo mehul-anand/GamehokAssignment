@@ -27,7 +27,7 @@ export default function CreateTournamentPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch("${process.env.NEXT_PUBLIC_TOURNAMENT_API}/api/tournaments", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_TOURNAMENT_API}/api/tournaments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -48,10 +48,14 @@ export default function CreateTournamentPage() {
         status: "Upcoming",
         description: "",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error:", error);
-      setMessage("Error: " + error.message);
-    }
+      if (error instanceof Error) {
+          setMessage("Error: " + error.message);
+      } else {
+          setMessage("An unknown error occurred.");
+      }
+  }  
   };
 
   return (
